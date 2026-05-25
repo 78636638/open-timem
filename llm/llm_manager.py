@@ -12,6 +12,7 @@ from .zhipuai_adapter import ZhipuAIAdapter
 from .mock_adapter import MockLLMAdapter
 from .qwen_adapter import QwenAdapter
 from .qwen_local_adapter import QwenLocalAdapter
+from .minimax_adapter import MiniMaxAdapter
 from timem.utils.config_manager import get_llm_config
 from timem.utils.logging import get_logger
 
@@ -36,6 +37,8 @@ def _get_llm_cached(provider: str) -> BaseLLM:
         return QwenLocalAdapter()
     elif provider == "mock":
         return MockLLMAdapter()
+    elif provider == "minimax":
+        return MiniMaxAdapter()
     else:
         raise ValueError(f"Unsupported LLM provider: {provider}")
 

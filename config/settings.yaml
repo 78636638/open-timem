@@ -140,6 +140,14 @@ llm:
       test_api_key_1: ${ZHIPUAI_API_KEY:}
       test_api_key_number: 0
       timeout: 90
+    minimax:
+      api_key: ${MINIMAX_API_KEY:}
+      base_url: ${MINIMAX_BASE_URL:https://api.minimaxi.com/v1}
+      max_retries: 3
+      max_tokens: 2048
+      model: MiniMax-M2.7
+      temperature: 0.7
+      timeout: 90
   resilience:
     adaptive_timeout:
       enabled: true
