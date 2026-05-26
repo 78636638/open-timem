@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiMem AI 聊天助手</title>
+    <link rel="stylesheet" href="/web/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🌲</span>
+                    <span class="logo-text">TiMem</span>
+                </div>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <span>+</span> 新对话
+                </button>
+            </div>
+
+            <div class="sessions-list" id="sessionsList">
+                <div class="session-item active" data-session-id="default">
+                    <span class="session-icon">💬</span>
+                    <span class="session-title">当前对话</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name" id="userName">访客用户</span>
+                </div>
+                <button class="settings-btn" id="settingsBtn">⚙️</button>
+            </div>
+        </aside>
+
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="chat-header-info">
+                    <h1 class="chat-title">AI 助手</h1>
+                    <span class="chat-status" id="chatStatus">在线</span>
+                </div>
+                <div class="chat-header-actions">
+                    <button class="header-btn" id="clearChatBtn" title="清空对话">
+                        🗑️
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message message-welcome">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>你好！我是 TiMem AI 助手。</p>
+                        <p>我可以记住我们的对话内容，提供个性化的回复。</p>
+                        <p>有什么我可以帮助你的吗？</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-container">
+                    <textarea
+                        id="chatInput"
+                        placeholder="输入消息..."
+                        rows="1"
+                        autofocus
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="chat-input-footer">
+                    <span class="memory-indicator" id="memoryIndicator">
+                        🧠 记忆已开启
+                    </span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>设置</h2>
+                <button class="close-btn" id="closeSettingsBtn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label>用户名</label>
+                    <input type="text" id="settingUsername" placeholder="输入用户名" value="访客用户">
+                </div>
+                <div class="setting-item">
+                    <label>用户 ID</label>
+                    <input type="text" id="settingUserId" placeholder="输入用户ID" value="web_user">
+                </div>
+                <div class="setting-item">
+                    <label>API 地址</label>
+                    <input type="text" id="settingApiUrl" placeholder="http://localhost:8000" value="http://localhost:8000">
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="settingSaveMemory" checked>
+                        启用记忆功能
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="saveSettingsBtn">保存</button>
+                <button class="btn btn-secondary" id="cancelSettingsBtn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <span>思考中...</span>
+    </div>
+
+    <script src="/web/static/app.js?v=2026052612"></script>
+</body>
+</html>
